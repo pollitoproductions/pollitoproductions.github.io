@@ -1,44 +1,83 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Pollito Productions – Free Spanish learning game and guides</title>
-<meta name="description" content="Pollito Productions makes Vocabulario Español, a free 3D browser game where you explore a planet and collect 1,000 Spanish vocabulary words, with guides for learners.">
-<meta name="google-adsense-account" content="ca-pub-7858482153655813">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7858482153655813" crossorigin="anonymous"></script>
-<style>
-html{box-sizing:border-box}
-body{margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:radial-gradient(circle at 50% 0,#12301d,#02040a 65%);background-attachment:fixed;color:#dfeee3;line-height:1.65}
-main{max-width:700px;margin:0 auto;padding:calc(28px + env(safe-area-inset-top,0px)) 18px calc(40px + env(safe-area-inset-bottom,0px))}
-h1{font-size:clamp(1.8rem,6vw,2.6rem);color:#d2f5dc;margin:0 0 6px;line-height:1.2}
-h2{font-size:1.15rem;color:#b4e6c3;margin:34px 0 8px}
-p{margin:0 0 12px;color:rgba(255,255,255,.78)}
-a{color:#96cdff}
-.lead{font-size:1.05rem;color:rgba(255,255,255,.85)}
-.play{display:inline-block;margin:10px 0 6px;padding:13px 24px;border:1px solid rgba(180,230,195,.35);border-radius:12px;background:rgba(50,110,65,.7);color:#fff;text-decoration:none;font-weight:700;letter-spacing:.06em}
-.play:hover,.play:focus-visible{background:rgba(65,140,85,.85)}
-ul.links{list-style:none;margin:0;padding:0}
-ul.links li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
-ul.links li:last-child{border-bottom:0}
-ul.links span{display:block;font-size:.88rem;color:rgba(255,255,255,.6)}
-footer{margin-top:40px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:.82rem;color:rgba(255,255,255,.5)}
-footer a{margin-right:12px}footer p{margin-top:10px;color:rgba(255,255,255,.4)}
-</style></head>
-<body><main>
-<h1>Pollito Productions</h1>
-<p class="lead">Free tools for learning Spanish, made by Brant Fuller.</p>
-
-<h2>Vocabulario Español</h2>
-<p>Vocabulario Español is a free 3D game that runs in your browser. You are the keeper of a lost glossary whose pages have scattered across a quiet planet as glowing vocabulary cards. Explore the world, find all 1,000 cards, and learn each Spanish word as you collect it. Your progress is saved in your own browser, and there is no account or sign-up.</p>
-<p><a class="play" href="vocabularioespanol/index.html">Start learning</a></p>
-
-<h2>Learn more</h2>
-<ul class="links">
-<li><a href="vocabularioespanol/guides.html">Spanish learning guides</a><span>Grammar, pronunciation, vocabulary tips, cognates, and common mistakes.</span></li>
-<li><a href="vocabularioespanol/about.html">About the game</a><span>What it is, who it is for, and how it works.</span></li>
-<li><a href="vocabularioespanol/how-to-play.html">How to play</a><span>Controls for keyboard and touch screens.</span></li>
-<li><a href="vocabularioespanol/vocabulary.html">Full vocabulary list</a><span>All the words in the game, searchable by letter.</span></li>
-<li><a href="sitemap.xml">Sitemap</a><span>A list of every page on this site.</span></li>
-</ul>
-
-<p>Contact: <a href="mailto:pollitoproductions@gmail.com">pollitoproductions@gmail.com</a></p>
-<footer><a href="vocabularioespanol/index.html">Game</a><a href="vocabularioespanol/guides.html">Guides</a><a href="vocabularioespanol/about.html">About</a><a href="vocabularioespanol/privacy.html">Privacy Policy</a><a href="sitemap.xml">Sitemap</a><p>Copyright © All Rights Reserved — Brant Fuller 2026</p></footer>
-</main></body></html>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://pollitoproductions.github.io/</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/guides.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/about.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/how-to-play.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/vocabulary.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/tips.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/accents-pronunciation.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/cognates.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/common-mistakes.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/conjugation-and-infinitive.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/countries-directions.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/el-and-la.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/gustar-encantar.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/immersion-without-moving.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/saber-vs-conocer.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/ser-vs-estar.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/spanish-articles.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/spanish-verbs.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+  <url>
+    <loc>https://pollitoproductions.github.io/vocabularioespanol/privacy.html</loc>
+    <lastmod>2026-10-09</lastmod>
+  </url>
+</urlset>
