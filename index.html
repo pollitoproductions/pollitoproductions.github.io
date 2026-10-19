@@ -1,44 +1,70 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Pollito Productions – Free Spanish learning game and guides</title>
-<meta name="description" content="Pollito Productions makes Vocabulario Español, a free 3D browser game where you explore a planet and collect 1,000 Spanish vocabulary words, with guides for learners.">
+<title>Pollito Productions – Free Spanish learning games and guides</title>
+<meta name="description" content="Pollito Productions makes free browser games that teach Spanish vocabulary: explore a planet or the Backrooms, collect 1,000 words, and learn with guides and free classroom worksheets.">
 <meta name="google-adsense-account" content="ca-pub-7858482153655813">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7858482153655813" crossorigin="anonymous"></script>
-<style>
-html{box-sizing:border-box}
-body{margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:radial-gradient(circle at 50% 0,#12301d,#02040a 65%);background-attachment:fixed;color:#dfeee3;line-height:1.65}
-main{max-width:700px;margin:0 auto;padding:calc(28px + env(safe-area-inset-top,0px)) 18px calc(40px + env(safe-area-inset-bottom,0px))}
-h1{font-size:clamp(1.8rem,6vw,2.6rem);color:#d2f5dc;margin:0 0 6px;line-height:1.2}
-h2{font-size:1.15rem;color:#b4e6c3;margin:34px 0 8px}
-p{margin:0 0 12px;color:rgba(255,255,255,.78)}
-a{color:#96cdff}
-.lead{font-size:1.05rem;color:rgba(255,255,255,.85)}
-.play{display:inline-block;margin:10px 0 6px;padding:13px 24px;border:1px solid rgba(180,230,195,.35);border-radius:12px;background:rgba(50,110,65,.7);color:#fff;text-decoration:none;font-weight:700;letter-spacing:.06em}
-.play:hover,.play:focus-visible{background:rgba(65,140,85,.85)}
+<style>html{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#fbf8f1 linear-gradient(180deg,#fff1c9 0,#fbf8f1 280px) no-repeat;color:#26362d;line-height:1.7}
+main{max-width:720px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(40px + env(safe-area-inset-bottom,0px))}
+a.back{display:inline-block;padding:9px 16px;border-radius:999px;background:#2f7d57;color:#fff;text-decoration:none;font-weight:700;letter-spacing:.06em;font-size:.85rem;box-shadow:0 2px 0 #1f5c3f}
+h1{font-size:clamp(1.7rem,5vw,2.3rem);color:#1f5c3f;margin:22px 0 8px;line-height:1.2}
+h2{font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;color:#2f7d57;margin:28px 0 8px}
+a{color:#0b64c0}p{margin:0 0 12px;color:#33443a}
+i{color:#1f5c3f}
+.keyboard-controls{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 14px;margin:8px 0 16px}
+.key-row{font-size:.9rem;color:#33443a}.touch-help{grid-column:1/-1}
+.key{display:inline-block;min-width:38px;padding:3px 7px;margin-right:5px;text-align:center;border:1px solid #cfc8b6;border-bottom-width:2px;border-radius:6px;background:#fff;color:#26362d;font-size:.72rem;font-weight:700}
+ul.words{list-style:none;columns:2;column-gap:20px;margin:0 0 6px;padding:0}ul.words li{break-inside:avoid;font-size:.9rem}ul.words b{color:#1f5c3f}
+.letters a{display:inline-block;padding:2px 7px;margin:0 2px 4px 0;border:1px solid #d9d2bf;border-radius:6px;background:#fff;color:#1f5c3f;text-decoration:none;font-size:.8rem}
+.ad{margin:28px 0 0;min-height:100px}.adlabel{font-size:.62rem;letter-spacing:.12em;color:#7b8a81;margin-bottom:4px}
+footer{margin-top:34px;padding-top:16px;border-top:1px solid #e3dccb;font-size:.82rem;color:#5b6b62}
+footer a{margin-right:12px;display:inline-block}footer p{margin-top:10px;color:#7b8a81}
+.game{background:#fff;border:1px solid #e6dfcf;border-radius:18px;overflow:hidden;margin:18px 0 26px;box-shadow:0 6px 18px rgba(60,80,60,.10)}
+.game img{display:block;width:100%;height:auto;background:#223}
+.game .body{padding:16px 18px 20px}
+.game h2{font-size:1.3rem;letter-spacing:0;text-transform:none;color:#1f5c3f;margin:0 0 8px}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:#e3f3ea;color:#1f5c3f;margin:0 6px 10px 0}
+.tag.warn{background:#fff0d1;color:#7a4b00}
+a.btn{display:inline-block;margin:6px 8px 0 0;padding:12px 22px;border-radius:12px;background:#2f7d57;color:#fff;text-decoration:none;font-weight:700;letter-spacing:.04em;box-shadow:0 3px 0 #1f5c3f}
+a.btn:hover,a.btn:focus-visible{background:#38906a}
+a.btn.alt{background:#fff;color:#1f5c3f;border:2px solid #2f7d57;box-shadow:none;padding:10px 20px}
+.note{background:#fff7dc;border-left:4px solid #f6b93b;padding:10px 14px;border-radius:8px;margin:14px 0}
+.note p{margin:0}
+.lead{font-size:1.08rem;color:#33443a}
 ul.links{list-style:none;margin:0;padding:0}
-ul.links li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+ul.links li{padding:11px 0;border-bottom:1px solid #e6dfcf}
 ul.links li:last-child{border-bottom:0}
-ul.links span{display:block;font-size:.88rem;color:rgba(255,255,255,.6)}
-footer{margin-top:40px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:.82rem;color:rgba(255,255,255,.5)}
-footer a{margin-right:12px}footer p{margin-top:10px;color:rgba(255,255,255,.4)}
-</style></head>
+ul.links span{display:block;font-size:.88rem;color:#5b6b62}
+@media(max-width:520px){ul.words{columns:1}.keyboard-controls{grid-template-columns:1fr}}
+main{padding-top:calc(28px + env(safe-area-inset-top,0px))}h1{font-size:clamp(1.9rem,6vw,2.7rem);margin-top:6px}h2{margin-top:30px}</style></head>
 <body><main>
 <h1>Pollito Productions</h1>
 <p class="lead">Free tools for learning Spanish, made by Brant Fuller.</p>
 
+<h2>Our games</h2>
+<p>Both games use the same 1,000 vocabulary cards. You explore, find the cards, and say each word aloud as you collect it.</p>
+<div class="game"><img src="vocabularioespanol/images/game-planet.jpg" width="900" height="558" alt="A grassy hill under a starry sky in Vocabulario Español" loading="lazy"><div class="body">
+<span class="tag">3D open world</span><span class="tag">Calm</span>
 <h2>Vocabulario Español</h2>
-<p>Vocabulario Español is a free 3D game that runs in your browser. You are the keeper of a lost glossary whose pages have scattered across a quiet planet as glowing vocabulary cards. Explore the world, find all 1,000 cards, and learn each Spanish word as you collect it. Your progress is saved in your own browser, and there is no account or sign-up.</p>
-<p><a class="play" href="vocabularioespanol/index.html">Start learning</a></p>
+<p>Keep a lost glossary: its pages have scattered across a quiet planet as glowing vocabulary cards. Explore the world, find all 1,000 cards, and learn each Spanish word as you go. Free, in your browser, no sign-up.</p>
+<a class="play btn" href="vocabularioespanol/index.html">Play the game</a></div></div>
+<div class="game"><img src="vocabularioespanol/images/game-backrooms.jpg" width="900" height="558" alt="A yellow hallway in Backrooms: El Glosario Perdido" loading="lazy"><div class="body">
+<span class="tag">First person</span><span class="tag warn">Spooky</span>
+<h2>Backrooms: El Glosario Perdido</h2>
+<p>Noclip into endless yellow hallways, collect the lost pages of your Spanish glossary, and read each word aloud to restore your health and find the way out.</p>
+<a class="btn" href="https://pollitoproductions.github.io/backroomsspanish/">Play Backrooms</a> <a class="btn alt" href="vocabularioespanol/play.html">About both games</a></div></div>
 
 <h2>Learn more</h2>
 <ul class="links">
 <li><a href="vocabularioespanol/guides.html">Spanish learning guides</a><span>Grammar, pronunciation, vocabulary tips, cognates, and common mistakes.</span></li>
-<li><a href="vocabularioespanol/about.html">About the game</a><span>What it is, who it is for, and how it works.</span></li>
+<li><a href="vocabularioespanol/play.html">Learn Spanish through play</a><span>Both games, what they teach, and which one to start with.</span></li>
+<li><a href="vocabularioespanol/resources.html">Free classroom resources</a><span>Printable worksheets and a teacher guide with answer keys.</span></li>
+<li><a href="vocabularioespanol/about.html">About the games</a><span>What they are, who they are for, and how they work.</span></li>
 <li><a href="vocabularioespanol/how-to-play.html">How to play</a><span>Controls for keyboard and touch screens.</span></li>
 <li><a href="vocabularioespanol/vocabulary.html">Full vocabulary list</a><span>All the words in the game, searchable by letter.</span></li>
-<li><a href="sitemap.xml">Sitemap</a><span>A list of every page on this site.</span></li>
 </ul>
 
 <p>Contact: <a href="mailto:pollitoproductions@gmail.com">pollitoproductions@gmail.com</a></p>
-<footer><a href="vocabularioespanol/index.html">Game</a><a href="vocabularioespanol/guides.html">Guides</a><a href="vocabularioespanol/about.html">About</a><a href="vocabularioespanol/privacy.html">Privacy Policy</a><a href="sitemap.xml">Sitemap</a><p>Copyright © All Rights Reserved — Brant Fuller 2026</p></footer>
+<footer><a href="vocabularioespanol/index.html">Game</a><a href="vocabularioespanol/guides.html">Guides</a><a href="vocabularioespanol/play.html">Play</a><a href="vocabularioespanol/resources.html">Resources</a><a href="vocabularioespanol/about.html">About</a><a href="vocabularioespanol/privacy.html">Privacy Policy</a><p>Copyright © All Rights Reserved — Brant Fuller 2026</p></footer>
 </main></body></html>
