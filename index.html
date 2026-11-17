@@ -10,7 +10,7 @@ body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;backgrou
 .topbar{display:flex;align-items:center;gap:12px;background:#000;color:#fff;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px;position:sticky;top:0;z-index:30}
 .brand{font-size:1.25rem;font-weight:800;letter-spacing:.02em}
 #menuBtn{background:#f97316;color:#000;border:0;border-radius:10px;width:44px;height:40px;font-size:1.4rem;line-height:1;cursor:pointer;font-weight:700;flex-shrink:0}
-.chatBtn{margin-left:auto;background:#f97316;color:#000;text-decoration:none;font-weight:700;border-radius:10px;padding:9px 14px;font-size:.95rem;white-space:nowrap;flex-shrink:0}
+.chatBtn{margin-left:auto;background:#f97316;color:#000;text-decoration:none;font-weight:700;border-radius:10px;padding:9px 14px;font-size:.95rem;white-space:nowrap;flex-shrink:0;border:none;cursor:pointer;font-family:inherit}
 .chatBtn:hover,.chatBtn:focus-visible{background:#ea580c;color:#fff}
 main{max-width:720px;margin:0 auto;padding:18px 18px calc(40px + env(safe-area-inset-bottom,0px))}
 .welcome h1{font-size:clamp(1.7rem,5vw,2.3rem);margin:8px 0 12px;line-height:1.2;color:#000}
@@ -63,7 +63,7 @@ body.menu-open{overflow:hidden}
 <header class="topbar">
 <button id="menuBtn" type="button" aria-label="Open menu" aria-controls="sideMenu" aria-expanded="false">☰</button>
 <span class="brand">Pollito Productions</span>
-<a class="chatBtn" href="vocabularioespanol/chatbot.html">💬 Chat with Pollito</a>
+<button class="chatBtn" id="chatWidgetBtn" type="button">💬 Chat with Pollito</button>
 </header>
 <div id="menuBackdrop" hidden></div>
 <nav id="sideMenu" aria-label="Site menu" hidden>
@@ -141,5 +141,178 @@ function toggleMore(btn){var target=document.getElementById(btn.getAttribute('da
 var moreBtns=document.querySelectorAll('.more-btn');
 for(var i=0;i<moreBtns.length;i++){moreBtns[i].addEventListener('click',function(){toggleMore(this);});}
 </script>
+<style>
+#chatWidget{display:none;position:fixed;top:60px;right:12px;width:min(380px,calc(100vw - 24px));max-height:calc(100vh - 80px);background:#fff7ed;border:2px solid #f97316;border-radius:16px;box-shadow:0 12px 32px rgba(0,0,0,.35);z-index:9999;flex-direction:column;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#chatWidget.open{display:flex}
+#chatWidget .cwHead{background:#f97316;color:#fff;padding:10px 12px;display:flex;align-items:center;gap:8px}
+#chatWidget .cwHead b{flex:1;font-size:1rem}
+#chatWidget .cwHead button{background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;padding:2px 6px;line-height:1}
+#chatWidget .cwBody{padding:10px;display:flex;flex-direction:column;gap:8px;overflow-y:auto}
+#chatWidget .cwRow{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;font-weight:700;color:#444;font-size:.9rem}
+#chatWidget .cwRow button{padding:6px 10px;font-size:.85rem;border-radius:999px;border:2px solid #f97316;background:#fff;color:#c2410c;cursor:pointer;font-weight:700}
+#chatWidget .cwRow button.active{background:#f97316;color:#fff}
+#chatWidget .cwModes button{flex:1;border-radius:10px;padding:8px 6px;font-size:.9rem}
+#chatWidget #cwTopics{display:none;flex-wrap:wrap;gap:6px;justify-content:center}
+#chatWidget #cwTopics.show{display:flex}
+#chatWidget #cwChat{min-height:220px;max-height:38vh;overflow-y:auto;background:#fff;border:1px solid #fde68a;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:8px}
+#chatWidget .cwMsg{max-width:88%;padding:8px 11px;border-radius:14px;line-height:1.4;white-space:pre-wrap;word-wrap:break-word;font-size:.95rem}
+#chatWidget .cwMsg.bot{background:#ffedd5;color:#7c2d12;align-self:flex-start;border-bottom-left-radius:4px}
+#chatWidget .cwMsg.user{background:#f97316;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+#chatWidget .cwMsg.sys{background:#fef3c7;color:#92400e;align-self:center;font-size:.85rem;text-align:center;max-width:96%}
+#chatWidget .cwMsg.typing{opacity:.7;font-style:italic}
+#chatWidget .cwInput{display:flex;gap:6px}
+#chatWidget #cwText{flex:1;padding:9px 10px;font-size:.95rem;border-radius:10px;border:2px solid #f97316;outline:none;min-width:0}
+#chatWidget #cwText:focus{border-color:#ea580c}
+#chatWidget #cwSend{padding:9px 14px;font-size:.95rem;border-radius:10px;border:none;background:#f97316;color:#fff;cursor:pointer;font-weight:700}
+#chatWidget #cwSend:disabled{opacity:.5;cursor:wait}
+#chatWidget .cwFoot{font-size:.75rem;color:#666;text-align:center}
+#chatWidget .cwFoot a{color:#ea580c}
+</style>
+<div id="chatWidget" role="dialog" aria-label="Chat with Pollito">
+  <div class="cwHead"><b>🐣 Chat with Pollito</b><button id="cwClose" type="button" aria-label="Close chat">✕</button></div>
+  <div class="cwBody">
+    <div class="cwRow">I'm learning:
+      <button id="cwLangEs" class="active" type="button">🇪🇸 Spanish</button>
+      <button id="cwLangEn" type="button">🇺🇸 English</button>
+    </div>
+    <div class="cwRow cwModes">
+      <button id="cwModeFree" class="active" type="button">💬 Free chat</button>
+      <button id="cwModePractice" type="button">🎯 Practice a topic</button>
+    </div>
+    <div id="cwTopics"></div>
+    <div id="cwChat"></div>
+    <div class="cwInput">
+      <input id="cwText" type="text" placeholder="Escribe en español… (or in English if you're stuck)" autocomplete="off">
+      <button id="cwSend" type="button">Send</button>
+    </div>
+    <p class="cwFoot">Pollito is an AI tutor — it can make mistakes. <a href="vocabularioespanol/chatbot.html">Open the full chat page →</a></p>
+  </div>
+</div>
+<script>
+(function(){
+var BACKEND_URL = "https://script.google.com/macros/s/AKfycby7dsQZSJPF-IRly7LeU7fmq957lks7OH6h2gbgJnavbQdo56qMYFQQGC0RbK0r-ktD/exec";
+var TOPICS = [
+  { id: "greetings", label: "👋 Greetings", name: "greetings and introductions" },
+  { id: "family", label: "👨‍👩‍👧 Family", name: "family" },
+  { id: "food", label: "🍕 Food", name: "food and drinks" },
+  { id: "school", label: "🏫 School", name: "school" },
+  { id: "hobbies", label: "⚽ Hobbies", name: "hobbies and free time" },
+  { id: "weather", label: "☀️ Weather", name: "the weather" },
+  { id: "numbers", label: "🔢 Numbers & time", name: "numbers and telling time" },
+  { id: "descriptions", label: "🧑 Descriptions", name: "describing people" }
+];
+var mode = "free";
+var topic = null;
+var learning = "spanish";
+var history = [];
+var widget = document.getElementById("chatWidget");
+var btn = document.getElementById("chatWidgetBtn");
+var closeBtn = document.getElementById("cwClose");
+var chatEl = document.getElementById("cwChat");
+var textEl = document.getElementById("cwText");
+var sendBtn = document.getElementById("cwSend");
+var topicsEl = document.getElementById("cwTopics");
+var modeFreeBtn = document.getElementById("cwModeFree");
+var modePracticeBtn = document.getElementById("cwModePractice");
+var langEsBtn = document.getElementById("cwLangEs");
+var langEnBtn = document.getElementById("cwLangEn");
+function toggleWidget(){
+  widget.classList.toggle("open");
+  if (widget.classList.contains("open")) { textEl.focus(); }
+}
+btn.addEventListener("click", toggleWidget);
+closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); });
+document.addEventListener("keydown", function(e){ if (e.key === "Escape") widget.classList.remove("open"); });
+function setLearning(l){
+  learning = l;
+  langEsBtn.classList.toggle("active", l === "spanish");
+  langEnBtn.classList.toggle("active", l === "english");
+  textEl.placeholder = l === "english" ? "Write in English… (or in Spanish if you're stuck)" : "Escribe en español… (or in English if you're stuck)";
+  startChat();
+}
+langEsBtn.addEventListener("click", function(){ setLearning("spanish"); });
+langEnBtn.addEventListener("click", function(){ setLearning("english"); });
+TOPICS.forEach(function(t){
+  var b = document.createElement("button");
+  b.textContent = t.label;
+  b.dataset.id = t.id;
+  b.type = "button";
+  b.addEventListener("click", function(){ pickTopic(t.id); });
+  topicsEl.appendChild(b);
+});
+function addMsg(text, who){
+  var d = document.createElement("div");
+  d.className = "cwMsg " + who;
+  d.textContent = text;
+  chatEl.appendChild(d);
+  chatEl.scrollTop = chatEl.scrollHeight;
+  return d;
+}
+function setMode(m){
+  mode = m;
+  modeFreeBtn.classList.toggle("active", m === "free");
+  modePracticeBtn.classList.toggle("active", m === "practice");
+  topicsEl.classList.toggle("show", m === "practice");
+  if (m === "free") { topic = null; }
+  startChat();
+}
+modeFreeBtn.addEventListener("click", function(){ setMode("free"); });
+modePracticeBtn.addEventListener("click", function(){ setMode("practice"); });
+function pickTopic(id){
+  topic = TOPICS.find(function(t){ return t.id === id; }) || null;
+  topicsEl.querySelectorAll("button").forEach(function(b){ b.classList.toggle("active", b.dataset.id === id); });
+  startChat();
+}
+function startChat(){
+  history = [];
+  chatEl.innerHTML = "";
+  var en = learning === "english";
+  if (mode === "practice" && !topic) {
+    addMsg(en ? "Pick a topic above and I'll ask you questions about it — one at a time, in English. 🇺🇸" : "Pick a topic above and I'll ask you questions about it — one at a time, in Spanish. 🇪🇸", "sys");
+    return;
+  }
+  var greet = mode === "practice"
+    ? (en ? "Hi! I'm Pollito. Let's practice " + topic.name + ". I'll ask you questions, one at a time. Let's go!"
+         : "¡Hola! Soy Pollito. Vamos a practicar " + topic.name + ". Te voy a hacer preguntas, una a la vez. ¡Empezamos!")
+    : (en ? "Hi! I'm Pollito 🐣. What do you want to talk about today? You can write in English — and if you get stuck, write in Spanish and I'll help."
+         : "¡Hola! Soy Pollito 🐣. ¿De qué quieres hablar hoy? Puedes escribir en español — y si te atascas, escribe en inglés y te ayudo.");
+  addMsg(greet, "bot");
+  history.push({ role: "bot", text: greet });
+}
+async function send(){
+  var text = textEl.value.trim();
+  if (!text) return;
+  textEl.value = "";
+  addMsg(text, "user");
+  history.push({ role: "user", text: text });
+  var typing = addMsg(learning === "english" ? "Pollito is writing…" : "Pollito está escribiendo…", "bot typing");
+  sendBtn.disabled = true;
+  textEl.disabled = true;
+  try {
+    var res = await fetch(BACKEND_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ message: text, history: history.slice(-12), mode: mode, topic: topic ? topic.name : null, learning: learning })
+    });
+    var data = await res.json();
+    typing.remove();
+    var reply = (data && data.reply) ? data.reply : "Lo siento, no entendí. ¿Puedes intentarlo de nuevo?";
+    addMsg(reply, "bot");
+    history.push({ role: "bot", text: reply });
+  } catch (err) {
+    typing.remove();
+    addMsg("Hmm, I couldn't reach Pollito right now. Check your connection and try again.", "sys");
+  } finally {
+    sendBtn.disabled = false;
+    textEl.disabled = false;
+    textEl.focus();
+  }
+}
+sendBtn.addEventListener("click", send);
+textEl.addEventListener("keydown", function(e){ if (e.key === "Enter") send(); });
+startChat();
+})();
+</script>
+
 </body>
 </html>
