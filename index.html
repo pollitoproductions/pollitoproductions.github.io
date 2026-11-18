@@ -168,15 +168,15 @@ for(var i=0;i<moreBtns.length;i++){moreBtns[i].addEventListener('click',function
 #chatWidget .cwFoot{font-size:.75rem;color:#666;text-align:center}
 #chatWidget .cwFoot a{color:#ea580c}
 /* Pollito voice avatar pop-up (Nov 17): Pollito appears and "speaks" the reply. */
-#chatWidget #cwPollitoPop{display:none;align-items:flex-start;gap:6px}
+#chatWidget #cwPollitoPop{display:none;align-items:flex-start;gap:6px;position:relative;overflow:visible}
 #chatWidget #cwPollitoPop.show{display:flex}
-#chatWidget #cwPollitoPop .avatar{flex:0 0 36px;width:36px;height:36px;margin-top:2px}
-#chatWidget #cwPollitoPop .avatar img{width:36px;height:36px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 2px 5px rgba(0,0,0,.2)}
+#chatWidget #cwPollitoPop .avatar{flex:0 0 36px;width:36px;height:36px;margin-top:2px;position:relative;z-index:2;flex-shrink:0}
+#chatWidget #cwPollitoPop .avatar img{width:36px;height:36px;border-radius:50%;object-fit:cover;display:block;background:#fff;border:2px solid #f97316;box-shadow:0 2px 5px rgba(0,0,0,.25)}
 #chatWidget #cwPollitoPop .avatar.speaking img{animation:cwBob .35s ease-in-out infinite alternate}
 @keyframes cwBob{from{transform:translateY(0)}to{transform:translateY(-3px)}}
 #chatWidget #cwPollitoPop .popCard{flex:1;display:flex;align-items:flex-start;gap:6px;background:#fff;border:2px solid #f97316;border-radius:12px;padding:8px;box-shadow:0 4px 14px rgba(249,115,22,.25);min-width:0}
 #chatWidget #cwPollitoPop .popText{flex:1;line-height:1.4;color:#7c2d12;white-space:pre-wrap;word-wrap:break-word;min-width:0;font-size:.9rem}
-#chatWidget #cwPollitoPop .popClose{flex:0 0 auto;background:none;border:none;font-size:1rem;cursor:pointer;color:#999;padding:2px 4px;line-height:1}
+#chatWidget #cwPollitoPop .popBtn{flex:0 0 auto;background:none;border:none;font-size:1rem;cursor:pointer;color:#999;padding:2px 4px;line-height:1}
 #chatWidget .cwVoiceBtn{padding:9px 10px;font-size:1rem;border-radius:10px;border:2px solid #f97316;background:#fff;cursor:pointer;line-height:1}
 #chatWidget .cwVoiceBtn.on{background:#f97316;color:#fff}
 #chatWidget .cwVoiceBtn.listening{background:#dc2626;border-color:#dc2626;color:#fff;animation:cwPulse 1s ease-in-out infinite alternate}
@@ -212,7 +212,7 @@ for(var i=0;i<moreBtns.length;i++){moreBtns[i].addEventListener('click',function
       </div>
       <div class="popCard">
         <div class="popText" id="cwPollitoPopText"></div>
-        <button class="popClose" id="cwPollitoPopClose" type="button" aria-label="Close Pollito">✕</button>
+        <button class="popBtn" id="cwPollitoRepeat" type="button" title="Hear it again" aria-label="Hear it again">🔁</button><button class="popBtn" id="cwPollitoPopClose" type="button" aria-label="Close Pollito">✕</button>
       </div>
     </div>
     <div class="cwInput">
@@ -261,11 +261,18 @@ var cwSpeakBtn = document.getElementById("cwSpeakToggle");
 var cwSpeakOn = false; // Pollito speaks replies out loud — OFF by default.
 var cwRecog = null;
 var cwListening = false;
+var cwLastReply = ""; // the latest bot reply, so the repeat button can play it again.
 function cwShowPollito(text){
+  cwLastReply = text;
   cwPopTextEl.textContent = text;
   cwPopEl.classList.add("show");
   if (cwSpeakOn) cwSpeakText(text);
 }
+document.getElementById("cwPollitoRepeat").addEventListener("click", function(){
+  if (!cwLastReply) return;
+  cwPopEl.classList.add("show");
+  cwSpeakText(cwLastReply);
+});
 document.getElementById("cwPollitoPopClose").addEventListener("click", function(){
   cwPopEl.classList.remove("show");
   if ("speechSynthesis" in window) window.speechSynthesis.cancel();
@@ -469,6 +476,7 @@ textEl.addEventListener("keydown", function(e){ if (e.key === "Enter") send(); }
 startChat();
 })();
 </script>
+
 
 
 
