@@ -299,7 +299,7 @@ function cwPickVoice(){
   var natural = [];
   for (var k = 0; k < matches.length; k++) {
     var n = matches[k].name || "";
-    if (/natural|neural/i.test(n) || /^google/i.test(n)) natural.push(matches[k]);
+    if (/natural|neural|online|enhanced/i.test(n) || /^google/i.test(n)) natural.push(matches[k]);
   }
   for (var m = 0; m < natural.length; m++) {
     if (cwMaleName.test(natural[m].name || "")) return natural[m];
@@ -310,10 +310,11 @@ function cwPickVoice(){
     }
     if (natural.length) return natural[0];
   } else {
+    // English (Nov 18): Brant would rather have a natural English voice than
+    // a robotic male one ("sounds like Stephen Hawking's"). Natural wins, and
+    // if no natural voice is detected by name, fall back to the first voice
+    // (usually the system default, a natural one) — NOT the first male voice.
     if (natural.length) return natural[0];
-    for (var q = 0; q < matches.length; q++) {
-      if (cwMaleName.test(matches[q].name || "")) return matches[q];
-    }
   }
   return matches[0];
 }
@@ -494,6 +495,7 @@ textEl.addEventListener("keydown", function(e){ if (e.key === "Enter") send(); }
 startChat();
 })();
 </script>
+
 
 
 
