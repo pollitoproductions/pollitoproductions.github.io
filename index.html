@@ -229,7 +229,7 @@ for(var i=0;i<moreBtns.length;i++){moreBtns[i].addEventListener('click',function
         <button id="cwSend" type="button">Send</button>
       </div>
     </div>
-    <p class="cwFoot">Pollito is an AI tutor — it can make mistakes. Write in Spanish, or in English if you're stuck. <a href="vocabularioespanol/chatbot.html">Open the full chat page →</a></p>
+    <p class="cwFoot">Pollito is an AI tutor — it can make mistakes. <span id="cwFootWrite">Write in Spanish, or in English if you're stuck.</span> <a href="vocabularioespanol/chatbot.html">Open the full chat page →</a></p>
     <p class="cwFoot">🔒 Messages go to Groq only to reply — not stored, never used for training. <a href="privacy-policy.html">Privacy Policy</a></p>
   </div>
 </div>
@@ -404,6 +404,7 @@ function setLearning(l){
   langEsBtn.classList.toggle("active", l === "spanish");
   langEnBtn.classList.toggle("active", l === "english");
   textEl.placeholder = l === "english" ? "Write in English… (or in Spanish if you're stuck)" : "Escribe en español… (or in English if you're stuck)";
+  document.getElementById("cwFootWrite").textContent = l === "english" ? "Write in English, or in Spanish if you're stuck." : "Write in Spanish, or in English if you're stuck.";
   startChat();
 }
 langEsBtn.addEventListener("click", function(){ setLearning("spanish"); });
