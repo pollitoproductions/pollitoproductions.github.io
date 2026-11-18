@@ -160,10 +160,12 @@ for(var i=0;i<moreBtns.length;i++){moreBtns[i].addEventListener('click',function
 #chatWidget .cwMsg.user{background:#f97316;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
 #chatWidget .cwMsg.sys{background:#fef3c7;color:#92400e;align-self:center;font-size:.85rem;text-align:center;max-width:96%}
 #chatWidget .cwMsg.typing{opacity:.7;font-style:italic}
-#chatWidget .cwInput{display:flex;gap:6px}
-#chatWidget #cwText{flex:1;padding:9px 10px;font-size:.95rem;border-radius:10px;border:2px solid #f97316;outline:none;min-width:0}
+#chatWidget .cwInput{display:flex;gap:8px;align-items:stretch}
+#chatWidget #cwText{flex:1;padding:9px 10px;font-size:.95rem;line-height:1.4;border-radius:10px;border:2px solid #f97316;outline:none;min-width:0;resize:none;font-family:inherit}
 #chatWidget #cwText:focus{border-color:#ea580c}
-#chatWidget #cwSend{padding:9px 14px;font-size:.95rem;border-radius:10px;border:none;background:#f97316;color:#fff;cursor:pointer;font-weight:700}
+#chatWidget .cwSide{display:flex;flex-direction:column;gap:5px;flex:0 0 72px}
+#chatWidget .cwVoiceRow{display:flex;gap:5px}
+#chatWidget #cwSend{flex:1;padding:4px 8px;font-size:.9rem;border-radius:10px;border:none;background:#f97316;color:#fff;cursor:pointer;font-weight:700}
 #chatWidget #cwSend:disabled{opacity:.5;cursor:wait}
 #chatWidget .cwFoot{font-size:.75rem;color:#666;text-align:center}
 #chatWidget .cwFoot a{color:#ea580c}
@@ -177,15 +179,17 @@ for(var i=0;i<moreBtns.length;i++){moreBtns[i].addEventListener('click',function
 #chatWidget #cwPollitoPop .popCard{flex:1;display:flex;align-items:flex-start;gap:6px;background:#fff;border:2px solid #f97316;border-radius:12px;padding:8px;box-shadow:0 4px 14px rgba(249,115,22,.25);min-width:0}
 #chatWidget #cwPollitoPop .popText{flex:1;line-height:1.4;color:#7c2d12;white-space:pre-wrap;word-wrap:break-word;min-width:0;font-size:.9rem}
 #chatWidget #cwPollitoPop .popBtn{flex:0 0 auto;background:none;border:none;font-size:1rem;cursor:pointer;color:#999;padding:2px 4px;line-height:1}
-#chatWidget .cwVoiceBtn{padding:9px 10px;font-size:1rem;border-radius:10px;border:2px solid #f97316;background:#fff;cursor:pointer;line-height:1}
+#chatWidget .cwVoiceBtn{flex:1;padding:6px 2px;font-size:.95rem;border-radius:10px;border:2px solid #f97316;background:#fff;cursor:pointer;line-height:1}
 #chatWidget .cwVoiceBtn.on{background:#f97316;color:#fff}
 #chatWidget .cwVoiceBtn.listening{background:#dc2626;border-color:#dc2626;color:#fff;animation:cwPulse 1s ease-in-out infinite alternate}
 @keyframes cwPulse{from{opacity:1}to{opacity:.55}}
 /* Mobile: shrink the widget input row and pop-up so everything fits on a phone. */
 @media (max-width:420px){
-#chatWidget .cwInput{gap:4px}
-#chatWidget .cwVoiceBtn{padding:8px 8px;font-size:.95rem}
-#chatWidget #cwSend{padding:8px 10px;font-size:.9rem}
+#chatWidget .cwInput{gap:6px}
+#chatWidget .cwSide{flex-basis:64px;gap:4px}
+#chatWidget .cwVoiceRow{gap:4px}
+#chatWidget .cwVoiceBtn{padding:5px 2px;font-size:.9rem}
+#chatWidget #cwSend{padding:4px 6px;font-size:.85rem}
 #chatWidget #cwText{padding:8px;font-size:.95rem}
 #chatWidget #cwPollitoPop{gap:5px}
 #chatWidget #cwPollitoPop .avatar{flex:0 0 32px;width:32px;height:32px}
@@ -216,10 +220,14 @@ for(var i=0;i<moreBtns.length;i++){moreBtns[i].addEventListener('click',function
       </div>
     </div>
     <div class="cwInput">
-      <button class="cwVoiceBtn" id="cwMic" type="button" title="Talk to Pollito" aria-label="Talk to Pollito">🎤</button>
-      <button class="cwVoiceBtn" id="cwSpeakToggle" type="button" title="Pollito speaks the reply out loud" aria-label="Pollito speaks the reply out loud" aria-pressed="false">🔇</button>
-      <input id="cwText" type="text" placeholder="Escribe en español…" autocomplete="off">
-      <button id="cwSend" type="button">Send</button>
+      <textarea id="cwText" rows="2" placeholder="Escribe en español… (or in English if you're stuck)" autocomplete="off"></textarea>
+      <div class="cwSide">
+        <div class="cwVoiceRow">
+          <button class="cwVoiceBtn" id="cwMic" type="button" title="Talk to Pollito" aria-label="Talk to Pollito">🎤</button>
+          <button class="cwVoiceBtn" id="cwSpeakToggle" type="button" title="Pollito speaks the reply out loud" aria-label="Pollito speaks the reply out loud" aria-pressed="false">🔇</button>
+        </div>
+        <button id="cwSend" type="button">Send</button>
+      </div>
     </div>
     <p class="cwFoot">Pollito is an AI tutor — it can make mistakes. Write in Spanish, or in English if you're stuck. <a href="vocabularioespanol/chatbot.html">Open the full chat page →</a></p>
     <p class="cwFoot">🔒 Messages go to Groq only to reply — not stored, never used for training. <a href="privacy-policy.html">Privacy Policy</a></p>
@@ -492,7 +500,7 @@ async function send(){
   }
 }
 sendBtn.addEventListener("click", send);
-textEl.addEventListener("keydown", function(e){ if (e.key === "Enter") send(); });
+textEl.addEventListener("keydown", function(e){ if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } });
 startChat();
 })();
 </script>
