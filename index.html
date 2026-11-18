@@ -181,6 +181,17 @@ for(var i=0;i<moreBtns.length;i++){moreBtns[i].addEventListener('click',function
 #chatWidget .cwVoiceBtn.on{background:#f97316;color:#fff}
 #chatWidget .cwVoiceBtn.listening{background:#dc2626;border-color:#dc2626;color:#fff;animation:cwPulse 1s ease-in-out infinite alternate}
 @keyframes cwPulse{from{opacity:1}to{opacity:.55}}
+/* Mobile: shrink the widget input row and pop-up so everything fits on a phone. */
+@media (max-width:420px){
+#chatWidget .cwInput{gap:4px}
+#chatWidget .cwVoiceBtn{padding:8px 8px;font-size:.95rem}
+#chatWidget #cwSend{padding:8px 10px;font-size:.9rem}
+#chatWidget #cwText{padding:8px;font-size:.95rem}
+#chatWidget #cwPollitoPop{gap:5px}
+#chatWidget #cwPollitoPop .avatar{flex:0 0 32px;width:32px;height:32px}
+#chatWidget #cwPollitoPop .avatar img{width:32px;height:32px}
+#chatWidget #cwPollitoPop .popCard{padding:7px 8px}
+}
 </style>
 <div id="chatWidget" role="dialog" aria-label="Chat with Pollito">
   <div class="cwHead"><b>🐣 Chat with Pollito</b><button id="cwClose" type="button" aria-label="Close chat">✕</button></div>
@@ -445,6 +456,7 @@ textEl.addEventListener("keydown", function(e){ if (e.key === "Enter") send(); }
 startChat();
 })();
 </script>
+
 
 
 
