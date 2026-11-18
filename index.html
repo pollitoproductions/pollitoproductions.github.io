@@ -274,7 +274,8 @@ var cwPopTextEl = document.getElementById("cwPollitoPopText");
 var cwAvatarEl = document.getElementById("cwPollitoAvatar");
 var cwMicBtn = document.getElementById("cwMic");
 var cwSpeakBtn = document.getElementById("cwSpeakToggle");
-var cwSpeakOn = false; // Pollito speaks replies out loud — OFF by default.
+var cwSpeakOn = false;
+var cwSpeakToken = 0; // guards the delayed speak() in cwSpeakText. // Pollito speaks replies out loud — OFF by default.
 var cwRecog = null;
 var cwListening = false;
 var cwLastReply = ""; // the latest bot reply, so the repeat button can play it again.
@@ -291,6 +292,7 @@ document.getElementById("cwPollitoRepeat").addEventListener("click", function(){
 });
 document.getElementById("cwPollitoPopClose").addEventListener("click", function(){
   cwPopEl.classList.remove("show");
+  cwSpeakToken++;
   if ("speechSynthesis" in window) window.speechSynthesis.cancel();
   cwAvatarEl.classList.remove("speaking");
 });
@@ -343,6 +345,7 @@ function cwSpeakText(text){
   // with a Spanish accent — the translation stays on screen to read.
   var clean = text.replace(/\([^)]*\)/g, "").replace(/\*\*/g, "").replace(/\*/g, "").replace(/_/g, "").replace(/\s{2,}/g, " ").trim();
   if (!clean) return;
+  var myToken = ++cwSpeakToken;
   var u = new SpeechSynthesisUtterance(clean);
   var v = cwPickVoice();
   if (v) u.voice = v;
@@ -350,7 +353,15 @@ function cwSpeakText(text){
   u.onstart = function(){ cwAvatarEl.classList.add("speaking"); };
   u.onend = function(){ cwAvatarEl.classList.remove("speaking"); };
   u.onerror = function(){ cwAvatarEl.classList.remove("speaking"); };
-  window.speechSynthesis.speak(u);
+  // FIX Nov 18: cancel() then speak() in the same task drops the utterance
+  // in Chrome and iOS Safari (the cancel eats the new one), and the
+  // synthesizer can get stuck paused. Speak a beat later, resume first,
+  // and only if no newer speak() has superseded this one.
+  setTimeout(function(){
+    if (myToken !== cwSpeakToken) return;
+    window.speechSynthesis.resume();
+    window.speechSynthesis.speak(u);
+  }, 100);
 }
 cwSpeakBtn.addEventListener("click", function(){
   cwSpeakOn = !cwSpeakOn;
@@ -358,6 +369,7 @@ cwSpeakBtn.addEventListener("click", function(){
   cwSpeakBtn.classList.toggle("on", cwSpeakOn);
   cwSpeakBtn.setAttribute("aria-pressed", String(cwSpeakOn));
   if (!cwSpeakOn && "speechSynthesis" in window) {
+    cwSpeakToken++;
     window.speechSynthesis.cancel();
     cwAvatarEl.classList.remove("speaking");
   }
