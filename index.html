@@ -291,9 +291,11 @@ function cwPickVoice(){
     }
   }
   if (!matches.length) return null;
-  // Prefer a natural-sounding voice (Nov 17): a male-only pick could land on
-  // a robotic male voice when a natural voice was available. Prefer a male
-  // voice among the natural ones, then any natural voice, then any male voice.
+  // Voice pick (Nov 17): Brant wants Pollito male. For Spanish, male wins over
+  // "natural" (the natural Spanish voices on his device are female, and the
+  // male Spanish voices sound fine). For English, natural wins over male
+  // (the male-only pick landed on a robotic English voice). In both cases a
+  // male natural voice is best.
   var natural = [];
   for (var k = 0; k < matches.length; k++) {
     var n = matches[k].name || "";
@@ -302,9 +304,16 @@ function cwPickVoice(){
   for (var m = 0; m < natural.length; m++) {
     if (cwMaleName.test(natural[m].name || "")) return natural[m];
   }
-  if (natural.length) return natural[0];
-  for (var p = 0; p < matches.length; p++) {
-    if (cwMaleName.test(matches[p].name || "")) return matches[p];
+  if (learning === "spanish") {
+    for (var p = 0; p < matches.length; p++) {
+      if (cwMaleName.test(matches[p].name || "")) return matches[p];
+    }
+    if (natural.length) return natural[0];
+  } else {
+    if (natural.length) return natural[0];
+    for (var q = 0; q < matches.length; q++) {
+      if (cwMaleName.test(matches[q].name || "")) return matches[q];
+    }
   }
   return matches[0];
 }
@@ -485,6 +494,7 @@ textEl.addEventListener("keydown", function(e){ if (e.key === "Enter") send(); }
 startChat();
 })();
 </script>
+
 
 
 
