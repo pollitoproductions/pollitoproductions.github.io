@@ -291,11 +291,20 @@ function cwPickVoice(){
     }
   }
   if (!matches.length) return null;
-  // Prefer a male voice for Pollito (Nov 17): "male" in the name, or a common
-  // male first name in the voice name. Falls back to the first voice for the
-  // language when no male voice is installed — the list depends on the device.
+  // Prefer a natural-sounding voice (Nov 17): a male-only pick could land on
+  // a robotic male voice when a natural voice was available. Prefer a male
+  // voice among the natural ones, then any natural voice, then any male voice.
+  var natural = [];
   for (var k = 0; k < matches.length; k++) {
-    if (cwMaleName.test(matches[k].name || "")) return matches[k];
+    var n = matches[k].name || "";
+    if (/natural|neural/i.test(n) || /^google/i.test(n)) natural.push(matches[k]);
+  }
+  for (var m = 0; m < natural.length; m++) {
+    if (cwMaleName.test(natural[m].name || "")) return natural[m];
+  }
+  if (natural.length) return natural[0];
+  for (var p = 0; p < matches.length; p++) {
+    if (cwMaleName.test(matches[p].name || "")) return matches[p];
   }
   return matches[0];
 }
@@ -476,6 +485,7 @@ textEl.addEventListener("keydown", function(e){ if (e.key === "Enter") send(); }
 startChat();
 })();
 </script>
+
 
 
 
