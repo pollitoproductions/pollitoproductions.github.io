@@ -34,6 +34,10 @@ main{max-width:720px;margin:0 auto;padding:18px 18px calc(40px + env(safe-area-i
 .box.game-card .box-body p{margin:0}
 .box.game-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.18);transform:translateY(-2px)}
 .box.game-card:hover img.thumb{transform:scale(1.03)}
+.box.tool-card{padding:0}
+.box.tool-card .tool-link{display:flex;flex:1;gap:12px;text-decoration:none;color:inherit;padding:12px}
+.box.tool-card .tool-link:focus-visible{outline:3px solid #f97316;outline-offset:2px}
+.box.tool-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.18);transform:translateY(-2px)}
 .intro-more{background:none;border:0;padding:0;color:#1a0dab;text-decoration:underline;cursor:pointer;font:inherit}
 .contact{margin-top:28px}
 .contact a{color:#000}
@@ -69,7 +73,7 @@ body.menu-open{overflow:hidden}
 <nav id="sideMenu" aria-label="Site menu" hidden>
 <button id="menuClose" type="button" aria-label="Close menu">✕</button>
 <p class="menu-title">Pollito Productions</p>
-<details><summary>Games</summary><ul><li><a href="vocabularioespanol/generation-ship.html">Generation Ship</a></li><li><a href="vocabularioespanol/spanish-slope.html">Slope Español</a></li><li><a href="vocabularioespanol/spanish-dash.html">Spanish Dash</a></li><li><a href="vocabularioespanol/index.html">Vocabulario Español</a></li><li><a href="https://pollitoproductions.github.io/backroomsspanish/">Backrooms: El Glosario Perdido</a></li></ul></details><details><summary>Learning Tools</summary><ul><li><a href="vocabularioespanol/cognates.html">Cognates (Cognados)</a></li><li><a href="vocabularioespanol/common-mistakes.html">False friends practice</a></li><li><a href="vocabularioespanol/modismos.html">Common expressions / Idioms (Modismos)</a></li><li><a href="vocabularioespanol/vocabulary.html">Vocabulary list</a></li><li><a href="vocabularioespanol/practice.html">Practice the words</a></li><li><a href="vocabularioespanol/conjugacion.html">Verb Conjugation (Conjugación)</a></li><li><a href="vocabularioespanol/ser-vs-estar.html">Ser vs. estar practice</a></li><li><a href="vocabularioespanol/saber-vs-conocer.html">Saber vs. conocer practice</a></li><li><a href="vocabularioespanol/pronouns.html">Pronouns practice</a></li><li><a href="vocabularioespanol/por-para.html">Por vs. para practice</a></li><li><a href="vocabularioespanol/commands.html">T&uacute; commands practice</a></li><li><a href="vocabularioespanol/dictado.html">Dictation (Dictado)</a></li><li><a href="vocabularioespanol/chatbot.html">💬 Chat with Pollito</a></li></ul></details><details><summary>Articles</summary><ul><li><a href="vocabularioespanol/ser-vs-estar.html">Ser vs. estar</a></li><li><a href="vocabularioespanol/spanish-articles.html">Spanish articles</a></li><li><a href="vocabularioespanol/el-and-la.html">El and la</a></li><li><a href="vocabularioespanol/conjugation-and-infinitive.html">Conjugation and infinitive</a></li><li><a href="vocabularioespanol/accents-pronunciation.html">Accents and pronunciation</a></li><li><a href="vocabularioespanol/gustar-encantar.html">Gustar and encantar</a></li><li><a href="vocabularioespanol/saber-vs-conocer.html">Saber vs. conocer</a></li><li><a href="vocabularioespanol/cognates.html">Cognates</a></li><li><a href="vocabularioespanol/modismos.html">Modismos</a></li><li><a href="vocabularioespanol/common-mistakes.html">Common mistakes</a></li><li><a href="vocabularioespanol/countries-directions.html">Countries and directions</a></li><li><a href="vocabularioespanol/immersion-without-moving.html">Immersion without moving</a></li><li><a href="vocabularioespanol/tips.html">Tips</a></li><li><a href="vocabularioespanol/dash-and-slope.html">Spanish Dash and Slope Español</a></li><li><a href="vocabularioespanol/guides.html">Browse all guides</a></li></ul></details><details><summary>Aprender inglés</summary><ul><li><a href="vocabularioespanol/common-mistakes.html">False friends practice</a></li><li><a href="vocabularioespanol/cognates.html">Cognates (Cognados)</a></li><li><a href="vocabularioespanol/modismos.html">Common expressions / Idioms (Modismos)</a></li><li><a href="vocabularioespanol/vocabulary.html">Vocabulary list</a></li><li><a href="vocabularioespanol/practice.html">Practice the words</a></li><li><a href="vocabularioespanol/conjugacion-en.html">Verb Forms in English</a></li><li><a href="vocabularioespanol/chatbot.html">💬 Chat with Pollito</a></li></ul></details>
+<details><summary>Games</summary><ul><li><a href="vocabularioespanol/generation-ship.html">Generation Ship</a></li><li><a href="vocabularioespanol/spanish-slope.html">Slope Español</a></li><li><a href="vocabularioespanol/spanish-dash.html">Spanish Dash</a></li><li><a href="vocabularioespanol/index.html">Vocabulario Español</a></li><li><a href="https://pollitoproductions.github.io/backroomsspanish/">Backrooms: El Glosario Perdido</a></li></ul></details><details><summary>Learning Tools With Articles</summary><ul><li><a href="vocabularioespanol/cognates.html">Cognates (Cognados)</a></li><li><a href="vocabularioespanol/common-mistakes.html">False friends practice</a></li><li><a href="vocabularioespanol/modismos.html">Common expressions / Idioms (Modismos)</a></li><li><a href="vocabularioespanol/vocabulary.html">Vocabulary list</a></li><li><a href="vocabularioespanol/practice.html">Practice the words</a></li><li><a href="vocabularioespanol/conjugacion.html">Verb Conjugation (Conjugación)</a></li><li><a href="vocabularioespanol/ser-vs-estar.html">Ser vs. estar practice</a></li><li><a href="vocabularioespanol/saber-vs-conocer.html">Saber vs. conocer practice</a></li><li><a href="vocabularioespanol/pronouns.html">Pronouns practice</a></li><li><a href="vocabularioespanol/por-para.html">Por vs. para practice</a></li><li><a href="vocabularioespanol/commands.html">T&uacute; commands practice</a></li><li><a href="vocabularioespanol/dictado.html">Dictation (Dictado)</a></li><li><a href="vocabularioespanol/chatbot.html">💬 Chat with Pollito</a></li></ul></details><details><summary>More Articles</summary><ul><li><a href="vocabularioespanol/spanish-articles.html">Spanish articles</a></li><li><a href="vocabularioespanol/el-and-la.html">El and la</a></li><li><a href="vocabularioespanol/conjugation-and-infinitive.html">Conjugation and infinitive</a></li><li><a href="vocabularioespanol/accents-pronunciation.html">Accents and pronunciation</a></li><li><a href="vocabularioespanol/gustar-encantar.html">Gustar and encantar</a></li><li><a href="vocabularioespanol/countries-directions.html">Countries and directions</a></li><li><a href="vocabularioespanol/immersion-without-moving.html">Immersion without moving</a></li><li><a href="vocabularioespanol/tips.html">Tips</a></li><li><a href="vocabularioespanol/dash-and-slope.html">Spanish Dash and Slope Español</a></li><li><a href="vocabularioespanol/guides.html">Browse all guides</a></li></ul></details><details><summary>Aprender inglés</summary><ul><li><a href="vocabularioespanol/common-mistakes.html">False friends practice</a></li><li><a href="vocabularioespanol/cognates.html">Cognates (Cognados)</a></li><li><a href="vocabularioespanol/modismos.html">Common expressions / Idioms (Modismos)</a></li><li><a href="vocabularioespanol/vocabulary.html">Vocabulary list</a></li><li><a href="vocabularioespanol/practice.html">Practice the words</a></li><li><a href="vocabularioespanol/conjugacion-en.html">Verb Forms in English</a></li><li><a href="vocabularioespanol/chatbot.html">💬 Chat with Pollito</a></li></ul></details>
 </nav>
 <main>
 <article class="welcome">
@@ -94,31 +98,31 @@ body.menu-open{overflow:hidden}
 </section>
 <h2 class="section-label">Tools &amp; articles</h2>
 <section class="boxes">
-<article class="box"><span class="accent"></span><div class="box-body"><h3>Cognates (Cognados)</h3><p>487 Spanish-English cognates as flashcards or a browsable list — hear every word in Spanish and English, and practice saying each in either direction.</p><a class="box-btn" href="vocabularioespanol/cognates.html">Cognate flashcards</a><a class="box-btn alt" href="vocabularioespanol/cognates.html#list">Cognate list</a><a class="box-btn alt" href="vocabularioespanol/cognates.html">Read the guide</a></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3>False friends practice</h3><p>100 Spanish words that look like English words — but mean something else. Each card tells you what the word does NOT mean. Pick the real meaning.</p><a class="box-btn" href="vocabularioespanol/common-mistakes.html">Open the false friends tool</a><a class="box-btn alt" href="vocabularioespanol/common-mistakes.html">Read the guide</a></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3>Common expressions / Idioms (Modismos)</h3><p>135 everyday Spanish expressions, from tomar el pelo to no pasa nada, quizzed in both directions.</p><a class="box-btn" href="vocabularioespanol/modismos.html">Open the idiom tool</a><a class="box-btn alt" href="vocabularioespanol/modismos.html">Read the guide</a></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3>Practice the words</h3><p>Flashcards and a quiz built from the 1,000 vocabulary words, in either direction, plus an el/la drill.</p><a class="box-btn" href="vocabularioespanol/practice.html">Open the quiz tool</a><a class="box-btn alt" href="vocabularioespanol/vocabulary.html">Vocabulary list</a></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3>Verb Conjugation (Conjugación)</h3><p>113 common Spanish verbs in present, preterite, and future — pick the right form, hear it spoken, and say it yourself.</p><a class="box-btn" href="vocabularioespanol/conjugacion.html">Open the conjugation tool</a><a class="box-btn alt" href="vocabularioespanol/conjugacion.html">Read the guide</a></div></article><article class="box"><span class="accent"></span><div class="box-body"><h3>Ser vs. estar practice</h3><p>Sentences with a blank — pick ser or estar, with translation help whenever you want it and audio after you answer.</p><a class="box-btn" href="vocabularioespanol/ser-vs-estar.html">Open the ser vs. estar tool</a><a class="box-btn alt" href="vocabularioespanol/ser-vs-estar.html">Read the guide</a></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3>Saber vs. conocer practice</h3><p>Sentences with a blank — pick saber or conocer, with translation help whenever you want it and audio after you answer.</p><a class="box-btn" href="vocabularioespanol/saber-vs-conocer.html">Open the saber vs. conocer tool</a><a class="box-btn alt" href="vocabularioespanol/saber-vs-conocer.html">Read the guide</a></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3>Pronouns practice</h3><p>Seven pronoun categories &mdash; gustar, direct object, reflexive, and more. Pick the right pronoun, with translation help and audio after you answer.</p><a class="box-btn" href="vocabularioespanol/pronouns.html">Open the pronouns tool</a><a class="box-btn alt" href="vocabularioespanol/pronouns.html">Read the guide</a></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3>Por vs. para practice</h3><p>100 sentences, one choice: por or para. Pick the right word, with translation help and audio after you answer.</p><a class="box-btn" href="vocabularioespanol/por-para.html">Open the por vs. para tool</a><a class="box-btn alt" href="vocabularioespanol/por-para.html">Read the guide</a></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3>T&uacute; commands practice</h3><p>100 sentences, one choice: the right command form. Affirmative commands, with negative commands as an option.</p><a class="box-btn" href="vocabularioespanol/commands.html">Open the t&uacute; commands tool</a><a class="box-btn alt" href="vocabularioespanol/commands.html">Read the guide</a></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3>Dictation (Dictado)</h3><p>Hear it, then pick it — dictation practice across the 1,000 words, the 113 verbs, and the 135 expressions.</p><a class="box-btn" href="vocabularioespanol/dictado.html">Open the dictation tool</a><a class="box-btn alt" href="vocabularioespanol/dictado.html">Read the guide</a></div></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/cognates.html"><span class="accent"></span><div class="box-body"><h3>Cognates (Cognados)</h3><p>487 Spanish-English cognates as flashcards or a browsable list — hear every word in Spanish and English, and practice saying each in either direction.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/common-mistakes.html"><span class="accent"></span><div class="box-body"><h3>False friends practice</h3><p>100 Spanish words that look like English words — but mean something else. Each card tells you what the word does NOT mean. Pick the real meaning.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/modismos.html"><span class="accent"></span><div class="box-body"><h3>Common expressions / Idioms (Modismos)</h3><p>135 everyday Spanish expressions, from tomar el pelo to no pasa nada, quizzed in both directions.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/practice.html"><span class="accent"></span><div class="box-body"><h3>Practice the words</h3><p>Flashcards and a quiz built from the 1,000 vocabulary words, in either direction, plus an el/la drill.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/conjugacion.html"><span class="accent"></span><div class="box-body"><h3>Verb Conjugation (Conjugación)</h3><p>113 common Spanish verbs in present, preterite, and future — pick the right form, hear it spoken, and say it yourself.</p></div></a></article><article class="box tool-card"><a class="tool-link" href="vocabularioespanol/ser-vs-estar.html"><span class="accent"></span><div class="box-body"><h3>Ser vs. estar practice</h3><p>Sentences with a blank — pick ser or estar, with translation help whenever you want it and audio after you answer.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/saber-vs-conocer.html"><span class="accent"></span><div class="box-body"><h3>Saber vs. conocer practice</h3><p>Sentences with a blank — pick saber or conocer, with translation help whenever you want it and audio after you answer.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/pronouns.html"><span class="accent"></span><div class="box-body"><h3>Pronouns practice</h3><p>Seven pronoun categories &mdash; gustar, direct object, reflexive, and more. Pick the right pronoun, with translation help and audio after you answer.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/por-para.html"><span class="accent"></span><div class="box-body"><h3>Por vs. para practice</h3><p>100 sentences, one choice: por or para. Pick the right word, with translation help and audio after you answer.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/commands.html"><span class="accent"></span><div class="box-body"><h3>T&uacute; commands practice</h3><p>100 sentences, one choice: the right command form. Affirmative commands, with negative commands as an option.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/dictado.html"><span class="accent"></span><div class="box-body"><h3>Dictation (Dictado)</h3><p>Hear it, then pick it — dictation practice across the 1,000 words, the 113 verbs, and the 135 expressions.</p></div></a></article>
 </section>
 <h2 class="section-label">Other articles</h2>
 <section class="boxes">
-<article class="box"><span class="accent"></span><div class="box-body"><h3><a href="vocabularioespanol/spanish-articles.html">Spanish articles</a></h3><p>El, la, los, las: matching every noun with the right article.</p></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3><a href="vocabularioespanol/el-and-la.html">El and la</a></h3><p>Masculine or feminine? The article in front of the noun is the quickest clue.</p></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3><a href="vocabularioespanol/conjugation-and-infinitive.html">Conjugation and infinitive</a></h3><p>From the infinitive to real sentences: how endings change with person and tense.</p></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3><a href="vocabularioespanol/accents-pronunciation.html">Accents and pronunciation</a></h3><p>Written accents, word stress, and sounding like a Spanish speaker.</p></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3><a href="vocabularioespanol/gustar-encantar.html">Gustar and encantar</a></h3><p>Why 'I like' works backwards in Spanish: me gusta, me encanta, and friends.</p></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3><a href="vocabularioespanol/dash-and-slope.html">Spanish Dash and Slope Español</a></h3><p>A teacher's guide to the two newest games: how Dash's ten levels map onto the first half of Spanish 1, and how Slope cycles the same material as mixed review.</p></div></article></section>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/spanish-articles.html"><span class="accent"></span><div class="box-body"><h3>Spanish articles</h3><p>El, la, los, las: matching every noun with the right article.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/el-and-la.html"><span class="accent"></span><div class="box-body"><h3>El and la</h3><p>Masculine or feminine? The article in front of the noun is the quickest clue.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/conjugation-and-infinitive.html"><span class="accent"></span><div class="box-body"><h3>Conjugation and infinitive</h3><p>From the infinitive to real sentences: how endings change with person and tense.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/accents-pronunciation.html"><span class="accent"></span><div class="box-body"><h3>Accents and pronunciation</h3><p>Written accents, word stress, and sounding like a Spanish speaker.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/gustar-encantar.html"><span class="accent"></span><div class="box-body"><h3>Gustar and encantar</h3><p>Why 'I like' works backwards in Spanish: me gusta, me encanta, and friends.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/dash-and-slope.html"><span class="accent"></span><div class="box-body"><h3>Spanish Dash and Slope Español</h3><p>A teacher's guide to the two newest games: how Dash's ten levels map onto the first half of Spanish 1, and how Slope cycles the same material as mixed review.</p></div></a></article></section>
 <button type="button" class="more-btn" data-target="more-articles-page" aria-expanded="false" style="background:#f97316;color:#000;border:0;border-radius:10px;padding:8px 16px;font-weight:700;font-size:.9rem;cursor:pointer;margin:12px 0 0">More articles</button>
 <div id="more-articles-page" hidden>
 <section class="boxes">
-<article class="box"><span class="accent"></span><div class="box-body"><h3><a href="vocabularioespanol/countries-directions.html">Countries and directions</a></h3><p>Countries of the Spanish-speaking world, and asking where things are.</p></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3><a href="vocabularioespanol/immersion-without-moving.html">Immersion without moving</a></h3><p>Surround yourself with Spanish at home: listening, reading, and daily habits.</p></div></article>
-<article class="box"><span class="accent"></span><div class="box-body"><h3><a href="vocabularioespanol/tips.html">Tips</a></h3><p>Study habits and shortcuts that make the words stick.</p></div></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/countries-directions.html"><span class="accent"></span><div class="box-body"><h3>Countries and directions</h3><p>Countries of the Spanish-speaking world, and asking where things are.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/immersion-without-moving.html"><span class="accent"></span><div class="box-body"><h3>Immersion without moving</h3><p>Surround yourself with Spanish at home: listening, reading, and daily habits.</p></div></a></article>
+<article class="box tool-card"><a class="tool-link" href="vocabularioespanol/tips.html"><span class="accent"></span><div class="box-body"><h3>Tips</h3><p>Study habits and shortcuts that make the words stick.</p></div></a></article>
 </section>
 <p><a class="box-btn" href="vocabularioespanol/guides.html">Browse all guides</a></p>
 </div>
@@ -255,49 +259,6 @@ var TOPICS = [
   { id: "numbers", label: "🔢 Numbers & time", labelEs: "🔢 Números y la hora", name: "numbers and telling time" },
   { id: "descriptions", label: "🧑 Descriptions", labelEs: "🧑 Descripciones", name: "describing people" }
 ];
-// Daily message limit: 25 messages per device per day. The count lives in
-// localStorage, so it follows the browser — and because the full page and the
-// widget share one origin, they share one count. It resets at midnight local
-// time. This is a soft limit: a student who clears browser data gets a fresh
-// count, and it can't tell two students apart on a shared device. It keeps
-// normal classroom use inside the Groq free tier.
-var DAILY_LIMIT = 25;
-var LIMIT_KEY = "pollito_daily_msgs";
-function todayStr(){
-  var d = new Date();
-  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
-}
-function getDailyCount(){
-  try {
-    var v = JSON.parse(localStorage.getItem(LIMIT_KEY) || "null");
-    if (v && v.date === todayStr()) return v.count || 0;
-  } catch (e) {}
-  return 0;
-}
-function bumpDailyCount(){
-  try {
-    localStorage.setItem(LIMIT_KEY, JSON.stringify({ date: todayStr(), count: getDailyCount() + 1 }));
-  } catch (e) {}
-}
-function resetInText(en){
-  var now = new Date();
-  var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-  var mins = Math.max(1, Math.ceil((midnight - now) / 60000));
-  var h = Math.floor(mins / 60), m = mins % 60;
-  if (en) {
-    if (h === 0) return m + (m === 1 ? " minute" : " minutes");
-    if (m === 0) return h + (h === 1 ? " hour" : " hours");
-    return h + (h === 1 ? " hour" : " hours") + " and " + m + (m === 1 ? " minute" : " minutes");
-  }
-  if (h === 0) return m + (m === 1 ? " minuto" : " minutos");
-  if (m === 0) return h + (h === 1 ? " hora" : " horas");
-  return h + (h === 1 ? " hora" : " horas") + " y " + m + (m === 1 ? " minuto" : " minutos");
-}
-function limitMsg(en){
-  return en
-    ? "You've used your 25 messages for today. They reset in " + resetInText(true) + " — come back then to keep practicing! (Ya usaste tus 25 mensajes de hoy. Se reinician en " + resetInText(false) + ". ¡Vuelve entonces para seguir practicando!)"
-    : "Ya usaste tus 25 mensajes de hoy. Se reinician en " + resetInText(false) + ". ¡Vuelve entonces para seguir practicando! (You've used your 25 messages for today. They reset in " + resetInText(true) + ". Come back then to keep practicing!)";
-}
 var mode = "free";
 var topic = null;
 var learning = "spanish";
@@ -551,10 +512,6 @@ function startChat(){
 async function send(){
   var text = textEl.value.trim();
   if (!text) return;
-  if (getDailyCount() >= DAILY_LIMIT) {
-    addMsg(limitMsg(learning === "english"), "sys");
-    return;
-  }
   cwLastUserMsg = text;
   textEl.value = "";
   addMsg(text, "user");
@@ -581,7 +538,6 @@ async function send(){
     if (!data || !data.reply) throw new Error("empty reply");
     addMsg(data.reply, "bot");
     history.push({ role: "bot", text: data.reply });
-    bumpDailyCount();
     cwShowPollito(data.reply);
   } catch (err) {
     clearTimeout(timer);
@@ -611,6 +567,8 @@ document.querySelectorAll("#cwAccents button").forEach(function(b){
 startChat();
 })();
 </script>
+
+
 
 
 
